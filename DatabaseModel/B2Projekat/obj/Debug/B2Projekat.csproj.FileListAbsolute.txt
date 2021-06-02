@@ -1,0 +1,11 @@
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\obj\Debug\B2Projekat.csproj.CoreCompileInputs.cache
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\B2Projekat.dll.config
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\B2Projekat.dll
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\B2Projekat.pdb
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\EntityFramework.dll
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\EntityFramework.SqlServer.dll
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\EntityFramework.xml
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\bin\Debug\EntityFramework.SqlServer.xml
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\obj\Debug\B2Projekat.csproj.CopyComplete
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\obj\Debug\B2Projekat.dll
+D:\Fax\baze2\Projekat\DatabaseModel\B2Projekat\obj\Debug\B2Projekat.pdb

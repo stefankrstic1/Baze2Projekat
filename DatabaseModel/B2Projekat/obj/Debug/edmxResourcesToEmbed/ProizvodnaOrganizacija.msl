@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="ProizvodnaOrganizacijaStoreContainer" CdmEntityContainer="ProizvodnaOrganizacijaContainer">
+    <EntitySetMapping Name="Radniks">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Radnik)">
+        <MappingFragment StoreEntitySet="Radniks">
+          <ScalarProperty Name="MBR" ColumnName="MBR" />
+          <ScalarProperty Name="Ime" ColumnName="Ime" />
+          <ScalarProperty Name="Prezime" ColumnName="Prezime" />
+          <ScalarProperty Name="AdresaStanovanja" ColumnName="AdresaStanovanja" />
+          <ScalarProperty Name="DatumZaposlenja" ColumnName="DatumZaposlenja" />
+          <ScalarProperty Name="DatumRodjenja" ColumnName="DatumRodjenja" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Magacioner)">
+        <MappingFragment StoreEntitySet="Radniks_Magacioner">
+          <ScalarProperty Name="MBR" ColumnName="MBR" />
+          <ScalarProperty Name="MagacinID" ColumnName="MagacinID" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.UProizvodnji)">
+        <MappingFragment StoreEntitySet="Radniks_UProizvodnji">
+          <ScalarProperty Name="MBR" ColumnName="MBR" />
+          <ScalarProperty Name="BrojRadnihSati" ColumnName="BrojRadnihSati" />
+          <ScalarProperty Name="MasinaIDMasina" ColumnName="MasinaIDMasina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Dostavljac)">
+        <MappingFragment StoreEntitySet="Radniks_Dostavljac">
+          <ScalarProperty Name="MBR" ColumnName="MBR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Masinas">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Masina)">
+        <MappingFragment StoreEntitySet="Masinas">
+          <ScalarProperty Name="IDMasina" ColumnName="IDMasina" />
+          <ScalarProperty Name="Proizvodjac" ColumnName="Proizvodjac" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="BrzinaRada" ColumnName="BrzinaRada" />
+          <ScalarProperty Name="Tip" ColumnName="Tip" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Paker)">
+        <MappingFragment StoreEntitySet="Masinas_Paker">
+          <ScalarProperty Name="IDMasina" ColumnName="IDMasina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Proizvodjac)">
+        <MappingFragment StoreEntitySet="Masinas_Proizvodjac">
+          <ScalarProperty Name="IDMasina" ColumnName="IDMasina" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Magacins">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Magacin)">
+        <MappingFragment StoreEntitySet="Magacins">
+          <ScalarProperty Name="ID" ColumnName="ID" />
+          <ScalarProperty Name="Kapacitet" ColumnName="Kapacitet" />
+          <ScalarProperty Name="Stanje" ColumnName="Stanje" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Pakets">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Paket)">
+        <MappingFragment StoreEntitySet="Pakets">
+          <ScalarProperty Name="IdPaketa" ColumnName="IdPaketa" />
+          <ScalarProperty Name="PakerIDMasina" ColumnName="PakerIDMasina" />
+          <ScalarProperty Name="MagacinID" ColumnName="MagacinID" />
+          <ScalarProperty Name="Tezina" ColumnName="Tezina" />
+          <ScalarProperty Name="DostavljacMBR" ColumnName="DostavljacMBR" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvodis">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Proizvodi)">
+        <MappingFragment StoreEntitySet="Proizvodis">
+          <ScalarProperty Name="ProizvodjacIDMasina" ColumnName="ProizvodjacIDMasina" />
+          <ScalarProperty Name="ProizvodIdProizvoda1" ColumnName="ProizvodIdProizvoda1" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Proizvods">
+      <EntityTypeMapping TypeName="IsTypeOf(ProizvodnaOrganizacija.Proizvod)">
+        <MappingFragment StoreEntitySet="Proizvods">
+          <ScalarProperty Name="IdProizvoda" ColumnName="IdProizvoda" />
+          <ScalarProperty Name="Naziv" ColumnName="Naziv" />
+          <ScalarProperty Name="Vrsta" ColumnName="Vrsta" />
+          <ScalarProperty Name="PaketIdPaketa" ColumnName="PaketIdPaketa" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

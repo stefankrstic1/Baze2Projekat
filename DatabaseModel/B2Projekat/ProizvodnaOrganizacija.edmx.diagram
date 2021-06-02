@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="2acbe26d188e4dd390fda2e16473f55e" Name="Diagram1" ZoomLevel="80" >
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Radnik" Width="1.5" PointX="2.25" PointY="0.5" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Masina" Width="1.5" PointX="1.625" PointY="6.75" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Magacin" Width="1.5" PointX="7.625" PointY="6.25" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.UProizvodnji" Width="1.5" PointX="0.75" PointY="3.875" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Dostavljac" Width="1.5" PointX="3.25" PointY="3.875" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Magacioner" Width="1.5" PointX="5.625" PointY="3.875" />
+        <InheritanceConnector EntityType="ProizvodnaOrganizacija.UProizvodnji" />
+        <InheritanceConnector EntityType="ProizvodnaOrganizacija.Dostavljac" />
+        <InheritanceConnector EntityType="ProizvodnaOrganizacija.Magacioner" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Paker" Width="1.5" PointX="0.5" PointY="9.5" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Proizvodjac" Width="1.5" PointX="2.75" PointY="9.5" />
+        <InheritanceConnector EntityType="ProizvodnaOrganizacija.Paker" />
+        <InheritanceConnector EntityType="ProizvodnaOrganizacija.Proizvodjac" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Paket" Width="1.5" PointX="0.5" PointY="12.375" IsExpanded="true" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.PakerPaket" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Proizvodi" Width="1.5" PointX="4.75" PointY="9.5" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.ProizvodjacProizvodi" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.MagacionerMagacin" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.PaketMagacin" />
+        <EntityTypeShape EntityType="ProizvodnaOrganizacija.Proizvod" Width="1.5" PointX="4.75" PointY="12.375" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.ProizvodProizvodi" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.ProizvodPaket" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.UProizvodnjiMasina" />
+        <AssociationConnector Association="ProizvodnaOrganizacija.PaketDostavljac" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

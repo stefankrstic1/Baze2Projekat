@@ -1,0 +1,225 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema xmlns="http://schemas.microsoft.com/ado/2009/11/edm" xmlns:cg="http://schemas.microsoft.com/ado/2006/04/codegeneration" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" Namespace="ProizvodnaOrganizacija" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" annotation:UseStrongSpatialTypes="false">
+  <EntityContainer Name="ProizvodnaOrganizacijaContainer" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Radniks" EntityType="ProizvodnaOrganizacija.Radnik" />
+    <EntitySet Name="Masinas" EntityType="ProizvodnaOrganizacija.Masina" />
+    <EntitySet Name="Magacins" EntityType="ProizvodnaOrganizacija.Magacin" />
+    <EntitySet Name="Pakets" EntityType="ProizvodnaOrganizacija.Paket" />
+    <AssociationSet Name="PakerPaket" Association="ProizvodnaOrganizacija.PakerPaket">
+      <End Role="Paker" EntitySet="Masinas" />
+      <End Role="Paket" EntitySet="Pakets" />
+    </AssociationSet>
+    <EntitySet Name="Proizvodis" EntityType="ProizvodnaOrganizacija.Proizvodi" />
+    <AssociationSet Name="ProizvodjacProizvodi" Association="ProizvodnaOrganizacija.ProizvodjacProizvodi">
+      <End Role="Proizvodjac" EntitySet="Masinas" />
+      <End Role="Proizvodi" EntitySet="Proizvodis" />
+    </AssociationSet>
+    <AssociationSet Name="MagacionerMagacin" Association="ProizvodnaOrganizacija.MagacionerMagacin">
+      <End Role="Magacioner" EntitySet="Radniks" />
+      <End Role="Magacin" EntitySet="Magacins" />
+    </AssociationSet>
+    <AssociationSet Name="PaketMagacin" Association="ProizvodnaOrganizacija.PaketMagacin">
+      <End Role="Paket" EntitySet="Pakets" />
+      <End Role="Magacin" EntitySet="Magacins" />
+    </AssociationSet>
+    <EntitySet Name="Proizvods" EntityType="ProizvodnaOrganizacija.Proizvod" />
+    <AssociationSet Name="ProizvodProizvodi" Association="ProizvodnaOrganizacija.ProizvodProizvodi">
+      <End Role="Proizvod" EntitySet="Proizvods" />
+      <End Role="Proizvodi" EntitySet="Proizvodis" />
+    </AssociationSet>
+    <AssociationSet Name="ProizvodPaket" Association="ProizvodnaOrganizacija.ProizvodPaket">
+      <End Role="Proizvod" EntitySet="Proizvods" />
+      <End Role="Paket" EntitySet="Pakets" />
+    </AssociationSet>
+    <AssociationSet Name="UProizvodnjiMasina" Association="ProizvodnaOrganizacija.UProizvodnjiMasina">
+      <End Role="UProizvodnji" EntitySet="Radniks" />
+      <End Role="Masina" EntitySet="Masinas" />
+    </AssociationSet>
+    <AssociationSet Name="PaketDostavljac" Association="ProizvodnaOrganizacija.PaketDostavljac">
+      <End Role="Paket" EntitySet="Pakets" />
+      <End Role="Dostavljac" EntitySet="Radniks" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Radnik">
+    <Key>
+      <PropertyRef Name="MBR" />
+    </Key>
+    <Property Name="MBR" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Ime" Type="String" Nullable="false" />
+    <Property Name="Prezime" Type="String" Nullable="false" />
+    <Property Name="AdresaStanovanja" Type="String" Nullable="false" />
+    <Property Name="DatumZaposlenja" Type="DateTime" Nullable="false" />
+    <Property Name="DatumRodjenja" Type="DateTime" Nullable="false" />
+    <Property Name="Tip" Type="String" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Masina">
+    <Key>
+      <PropertyRef Name="IDMasina" />
+    </Key>
+    <Property Name="IDMasina" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Proizvodjac" Type="String" Nullable="false" />
+    <Property Name="Model" Type="String" Nullable="false" />
+    <Property Name="BrzinaRada" Type="Int32" Nullable="false" />
+    <Property Name="Tip" Type="String" Nullable="false" />
+    <NavigationProperty Name="UProizvodnjis" Relationship="ProizvodnaOrganizacija.UProizvodnjiMasina" FromRole="Masina" ToRole="UProizvodnji" />
+  </EntityType>
+  <EntityType Name="Magacin">
+    <Key>
+      <PropertyRef Name="ID" />
+    </Key>
+    <Property Name="ID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Kapacitet" Type="Int32" Nullable="false" />
+    <Property Name="Stanje" Type="String" Nullable="false" />
+    <NavigationProperty Name="Magacioners" Relationship="ProizvodnaOrganizacija.MagacionerMagacin" FromRole="Magacin" ToRole="Magacioner" />
+    <NavigationProperty Name="Pakets" Relationship="ProizvodnaOrganizacija.PaketMagacin" FromRole="Magacin" ToRole="Paket" />
+  </EntityType>
+  <EntityType Name="UProizvodnji" BaseType="ProizvodnaOrganizacija.Radnik">
+    <Property Name="BrojRadnihSati" Type="String" Nullable="false" />
+    <NavigationProperty Name="Masina" Relationship="ProizvodnaOrganizacija.UProizvodnjiMasina" FromRole="UProizvodnji" ToRole="Masina" />
+    <Property Name="MasinaIDMasina" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="Dostavljac" BaseType="ProizvodnaOrganizacija.Radnik">
+    <NavigationProperty Name="Pakets" Relationship="ProizvodnaOrganizacija.PaketDostavljac" FromRole="Dostavljac" ToRole="Paket" />
+  </EntityType>
+  <EntityType Name="Magacioner" BaseType="ProizvodnaOrganizacija.Radnik">
+    <NavigationProperty Name="Magacin" Relationship="ProizvodnaOrganizacija.MagacionerMagacin" FromRole="Magacioner" ToRole="Magacin" />
+    <Property Name="MagacinID" Type="Int32" Nullable="true" />
+  </EntityType>
+  <EntityType Name="Paker" BaseType="ProizvodnaOrganizacija.Masina">
+    <NavigationProperty Name="Pakets" Relationship="ProizvodnaOrganizacija.PakerPaket" FromRole="Paker" ToRole="Paket" />
+  </EntityType>
+  <EntityType Name="Proizvodjac" BaseType="ProizvodnaOrganizacija.Masina">
+    <NavigationProperty Name="Proizvodis" Relationship="ProizvodnaOrganizacija.ProizvodjacProizvodi" FromRole="Proizvodjac" ToRole="Proizvodi" />
+  </EntityType>
+  <EntityType Name="Paket">
+    <Key>
+      <PropertyRef Name="IdPaketa" />
+    </Key>
+    <Property Name="IdPaketa" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <NavigationProperty Name="Paker" Relationship="ProizvodnaOrganizacija.PakerPaket" FromRole="Paket" ToRole="Paker" />
+    <Property Name="PakerIDMasina" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Magacin" Relationship="ProizvodnaOrganizacija.PaketMagacin" FromRole="Paket" ToRole="Magacin" />
+    <Property Name="MagacinID" Type="Int32" Nullable="false" />
+    <Property Name="Tezina" Type="String" Nullable="false" />
+    <NavigationProperty Name="Proizvods" Relationship="ProizvodnaOrganizacija.ProizvodPaket" FromRole="Paket" ToRole="Proizvod" />
+    <NavigationProperty Name="Dostavljac" Relationship="ProizvodnaOrganizacija.PaketDostavljac" FromRole="Paket" ToRole="Dostavljac" />
+    <Property Name="DostavljacMBR" Type="Int32" Nullable="true" />
+  </EntityType>
+  <Association Name="PakerPaket">
+    <End Type="ProizvodnaOrganizacija.Paker" Role="Paker" Multiplicity="1" />
+    <End Type="ProizvodnaOrganizacija.Paket" Role="Paket" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Paker">
+        <PropertyRef Name="IDMasina" />
+      </Principal>
+      <Dependent Role="Paket">
+        <PropertyRef Name="PakerIDMasina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Proizvodi">
+    <Key>
+      <PropertyRef Name="ProizvodjacIDMasina" />
+      <PropertyRef Name="ProizvodIdProizvoda1" />
+    </Key>
+    <NavigationProperty Name="Proizvodjac" Relationship="ProizvodnaOrganizacija.ProizvodjacProizvodi" FromRole="Proizvodi" ToRole="Proizvodjac" />
+    <Property Name="ProizvodjacIDMasina" Type="Int32" Nullable="false" />
+    <NavigationProperty Name="Proizvod" Relationship="ProizvodnaOrganizacija.ProizvodProizvodi" FromRole="Proizvodi" ToRole="Proizvod" />
+    <Property Name="ProizvodIdProizvoda1" Type="Int32" Nullable="false" />
+  </EntityType>
+  <Association Name="ProizvodjacProizvodi">
+    <End Type="ProizvodnaOrganizacija.Proizvodjac" Role="Proizvodjac" Multiplicity="1" />
+    <End Type="ProizvodnaOrganizacija.Proizvodi" Role="Proizvodi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvodjac">
+        <PropertyRef Name="IDMasina" />
+      </Principal>
+      <Dependent Role="Proizvodi">
+        <PropertyRef Name="ProizvodjacIDMasina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="MagacionerMagacin">
+    <End Type="ProizvodnaOrganizacija.Magacioner" Role="Magacioner" Multiplicity="*" />
+    <End Type="ProizvodnaOrganizacija.Magacin" Role="Magacin" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Magacin">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Magacioner">
+        <PropertyRef Name="MagacinID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaketMagacin">
+    <End Type="ProizvodnaOrganizacija.Paket" Role="Paket" Multiplicity="*" />
+    <End Type="ProizvodnaOrganizacija.Magacin" Role="Magacin" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Magacin">
+        <PropertyRef Name="ID" />
+      </Principal>
+      <Dependent Role="Paket">
+        <PropertyRef Name="MagacinID" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Proizvod">
+    <Key>
+      <PropertyRef Name="IdProizvoda" />
+    </Key>
+    <Property Name="IdProizvoda" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Naziv" Type="String" Nullable="false" />
+    <Property Name="Vrsta" Type="String" Nullable="false" />
+    <NavigationProperty Name="Proizvodis" Relationship="ProizvodnaOrganizacija.ProizvodProizvodi" FromRole="Proizvod" ToRole="Proizvodi" />
+    <NavigationProperty Name="Paket" Relationship="ProizvodnaOrganizacija.ProizvodPaket" FromRole="Proizvod" ToRole="Paket" />
+    <Property Name="PaketIdPaketa" Type="Int32" Nullable="true" />
+  </EntityType>
+  <Association Name="ProizvodProizvodi">
+    <End Type="ProizvodnaOrganizacija.Proizvod" Role="Proizvod" Multiplicity="1" />
+    <End Type="ProizvodnaOrganizacija.Proizvodi" Role="Proizvodi" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="Proizvod">
+        <PropertyRef Name="IdProizvoda" />
+      </Principal>
+      <Dependent Role="Proizvodi">
+        <PropertyRef Name="ProizvodIdProizvoda1" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="ProizvodPaket">
+    <End Type="ProizvodnaOrganizacija.Proizvod" Role="Proizvod" Multiplicity="*" />
+    <End Type="ProizvodnaOrganizacija.Paket" Role="Paket" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Paket">
+        <PropertyRef Name="IdPaketa" />
+      </Principal>
+      <Dependent Role="Proizvod">
+        <PropertyRef Name="PaketIdPaketa" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="UProizvodnjiMasina">
+    <End Type="ProizvodnaOrganizacija.UProizvodnji" Role="UProizvodnji" Multiplicity="*" />
+    <End Type="ProizvodnaOrganizacija.Masina" Role="Masina" Multiplicity="1" />
+    <ReferentialConstraint>
+      <Principal Role="Masina">
+        <PropertyRef Name="IDMasina" />
+      </Principal>
+      <Dependent Role="UProizvodnji">
+        <PropertyRef Name="MasinaIDMasina" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <Association Name="PaketDostavljac">
+    <End Type="ProizvodnaOrganizacija.Paket" Role="Paket" Multiplicity="*" />
+    <End Type="ProizvodnaOrganizacija.Dostavljac" Role="Dostavljac" Multiplicity="0..1" />
+    <ReferentialConstraint>
+      <Principal Role="Dostavljac">
+        <PropertyRef Name="MBR" />
+      </Principal>
+      <Dependent Role="Paket">
+        <PropertyRef Name="DostavljacMBR" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>

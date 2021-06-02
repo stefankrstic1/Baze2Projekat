@@ -1,0 +1,74 @@
+﻿<UserControl x:Class="CRUD.View.MagacinView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:CRUD.View"
+             xmlns:viewModel="clr-namespace:CRUD.ViewModel"
+             xmlns:views="clr-namespace:CRUD.View"
+             mc:Ignorable="d" 
+             Height="550" Width="750">
+    <UserControl.DataContext>
+        <viewModel:MagacinViewModel/>
+    </UserControl.DataContext>
+    <Grid >
+        <DataGrid VerticalAlignment="Stretch" ItemsSource="{Binding magacini}" IsReadOnly="True" Margin="10,10,10,351"  AutoGenerateColumns="False">
+            <DataGrid.Columns>
+                <DataGridTextColumn Width="*" Header="Id" Binding="{Binding ID}"/>
+                <DataGridTextColumn Width="*" Header="Stanje" Binding="{Binding Stanje}"/>
+                <DataGridTextColumn Width="*" Header="Kapacitet" Binding="{Binding Kapacitet}"/>
+            </DataGrid.Columns>
+        </DataGrid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="46,273,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding AddId}" VerticalAlignment="Center" Width="120" />
+            <Label Content="Stanje:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding AddStanje}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Kapacitet:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding AddKapacitet}" VerticalAlignment="Center" Width="120"/>
+            <Button Content="Dodaj" Command="{Binding DodajCommand}" Grid.ColumnSpan="2" Margin="50,55,76,-55" Grid.Row="2" />
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="295,273,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding UpdateId}" VerticalAlignment="Center" Width="120" />
+            <Label Content="Stanje:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="1" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="1" Text="{Binding UpdateStanje}" VerticalAlignment="Center" Width="120"/>
+            <Label Content="Kapacitet:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="2" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="2" Text="{Binding UpdateKapacitet}" VerticalAlignment="Center" Width="120"/>
+            
+            <Button Content="Izmeni" Command="{Binding AzurirajCommand}" Grid.ColumnSpan="2" Margin="61,56,65,-56" Grid.Row="2" />
+        </Grid>
+        <Grid HorizontalAlignment="Left" VerticalAlignment="Top" Margin="547,306,0,0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto"/>
+                <RowDefinition Height="Auto"/>
+            </Grid.RowDefinitions>
+            <Label Content="Id:" Grid.Column="0" HorizontalAlignment="Left" Margin="3" Grid.Row="0" VerticalAlignment="Center"/>
+            <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="3" Grid.Row="0" Text="{Binding DeleteId}" VerticalAlignment="Center" Width="120" />
+
+            <Button Content="Obrisi" Command="{Binding IzbrisiCommand}" Margin="29,10,32,-43" Grid.Row="1" Grid.ColumnSpan="2" />
+        </Grid>
+    </Grid>
+</UserControl>
