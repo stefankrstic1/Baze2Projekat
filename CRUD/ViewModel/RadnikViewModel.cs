@@ -360,6 +360,7 @@ namespace CRUD.ViewModel
 							AddDatumZaposlenja = "";
 							AddDatumRodjenja = "";
 							AddTip = "";
+							AddBrojRadnihSati = "";
 							OnPropertyChanged("AddMBR");
 							OnPropertyChanged("AddIme");
 							OnPropertyChanged("AddPrezime");
@@ -367,6 +368,7 @@ namespace CRUD.ViewModel
 							OnPropertyChanged("AddDatumZaposlenja");
 							OnPropertyChanged("AddDatumRodjenja");
 							OnPropertyChanged("AddTip");
+							OnPropertyChanged("AddBrojRadnihSati");
 						}
 					}
 					else

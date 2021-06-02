@@ -114,6 +114,8 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Programmability\Function\dbo.Function.sql" />
+    <Content Include="Programmability\Procedure\MagacinProcedure.sql" />
     <Content Include="ProizvodnaOrganizacija.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ProizvodnaOrganizacija.Context.cs</LastGenOutput>
@@ -129,5 +131,6 @@
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
